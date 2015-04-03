@@ -32,6 +32,7 @@ require_once('config.php');
 
 	//fonction pour sécuriser les données. trim (les espaces en trop et tabulation), stripslaches(élimination des slaches), htmlspecialchars (interdiction de caractères html)
 	function secureData($data){
+		
 			$data = trim($data);
 			$data = stripcslashes($data);
 			$data = htmlspecialchars($data);
@@ -43,6 +44,12 @@ require_once('config.php');
 
 	//fonction de la création de session sur les donnéés ($data)
 	function setSession($data){
+		
+		if(!isset($_SESSION)){
+			
+		    session_start();
+		}
+		
 		$_SESSION['id'] 				= $data['id'];
 		$_SESSION['email'] 				= $data['email'];
 		$_SESSION['pseudo'] 			= $data['pseudo'];
